@@ -134,32 +134,3 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
 
 # PID 1 Process: The Go Gateway acts as the init supervisor
 CMD ["/usr/local/bin/bermuda-gateway"]
-
-
-=============================================================================================================================================
-FLIE 8 - railway.json
-
-{
-  "$schema": "https://railway.app/railway.schema.json",
-  "build": {
-    "builder": "DOCKERFILE",
-    "dockerfilePath": "Dockerfile",
-    "watchPatterns": [
-      "Dockerfile",
-      ".dockerignore",
-      "go.mod",
-      "*.go",
-      "config.json",
-      "railway.json"
-    ]
-  },
-  "deploy": {
-    "healthcheckPath": "/healthz",
-    "healthcheckTimeout": 120,
-    "restartPolicyType": "ON_FAILURE",
-    "restartPolicyMaxRetries": 10,
-    "numReplicas": 1,
-    "sleepApplication": false,
-    "overlapSeconds": 20
-  }
-}
